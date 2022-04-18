@@ -13,7 +13,7 @@ runs:
     - name: Install deps, build and test
       shell: bash
       env:
-        NPM_TOKEN: ${{ inputs.npm-token }}
+        NODE_AUTH_TOKEN: ${{ inputs.npm-token }}
       run: |
         yarn install --frozen-lockfile
         yarn lint
