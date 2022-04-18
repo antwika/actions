@@ -1,5 +1,10 @@
 name: "CI"
 author: "ixuz"
+inputs:
+  github-token:
+    required: true
+  sonar-token:
+    required: true
 runs:
   using: "composite"
   steps:
@@ -15,3 +20,8 @@ runs:
       run: yarn build
     - name: Test project
       run: yarn test
+    - name: SonarCloud scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        SONAR_TOKEN: ${{ inputs.sonar-token }}
