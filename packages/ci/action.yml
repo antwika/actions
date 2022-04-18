@@ -15,10 +15,13 @@ runs:
       with:
         node-version: "16"
     - name: Install dependencies
+      shell: bash
       run: yarn install --frozen-lockfile
     - name: Build project
+      shell: bash
       run: yarn build
     - name: Test project
+      shell: bash
       run: yarn test
     - name: SonarCloud scan
       uses: SonarSource/sonarcloud-github-action@master
