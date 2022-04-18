@@ -1,0 +1,17 @@
+name: "CI"
+author: "ixuz"
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Node
+      uses: actions/checkout@v3
+      with:
+        node-version: "16"
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    - name: Build project
+      run: yarn build
+    - name: Test project
+      run: yarn test
