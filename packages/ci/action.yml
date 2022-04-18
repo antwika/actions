@@ -10,19 +10,12 @@ runs:
   steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - name: Setup Node
-      uses: actions/checkout@v3
-      with:
-        node-version: "16"
-    - name: Install dependencies
+    - name: Install deps, build and test
       shell: bash
-      run: yarn install --frozen-lockfile
-    - name: Build project
-      shell: bash
-      run: yarn build
-    - name: Test project
-      shell: bash
-      run: yarn test
+      run: |
+        yarn install --frozen-lockfile
+        yarn build
+        yarn test
     - name: SonarCloud scan
       uses: SonarSource/sonarcloud-github-action@master
       env:

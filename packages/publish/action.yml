@@ -1,0 +1,19 @@
+name: "Publish"
+author: "ixuz"
+inputs:
+  github-token:
+    required: true
+  sonar-token:
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: "CI"
+      uses: antwika/actions/packages/ci@main
+      with:
+        github-token: ${{ inputs.github-token }}
+        sonar-token: ${{ inputs.sonar-token }}
+    - name: Publish
+      shell: bash
+      run: |
+        yarn publish --access public
