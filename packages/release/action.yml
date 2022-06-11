@@ -1,0 +1,35 @@
+name: "Release"
+author: "ixuz"
+inputs:
+  github-token:
+    required: true
+  npm-token:
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        node-version: 16.x
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install deps
+      shell: bash
+      run: yarn install --frozen-lockfile
+    - name: Tag release
+      shell: bash
+      run: yarn release
+    - name: Lint
+      shell: bash
+      run: yarn lint
+    - name: Build
+      shell: bash
+      run: yarn build
+    - name: Test
+      shell: bash
+      run: yarn test
+    - name: Publish
+      shell: bash
+      run: yarn publish --access public
+      env:
+        NPM_AUTH_TOKEN: ${{ inputs.npm-token }}
