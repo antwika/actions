@@ -33,6 +33,9 @@ runs:
     - name: Test
       shell: bash
       run: yarn test
+    - name: Commit
+      shell: bash
+      run: git push --follow-tags origin main
     - name: Publish
       shell: bash
       run: yarn publish --access public
