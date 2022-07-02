@@ -12,6 +12,11 @@ runs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
+    - name: Git config
+      shell: bash
+      run: |
+        git config user.name "Antwika"
+        git config user.email "<>"
     - name: Install deps, build and test
       shell: bash
       run: |
