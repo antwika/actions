@@ -15,8 +15,8 @@ runs:
     - name: Install deps, build and test
       shell: bash
       run: |
-        git config user.name "Antwika"
-        git config user.email "<>"
+        git config --global user.name "Antwika"
+        git config --global user.email "<>"
         yarn install --frozen-lockfile
         yarn lint
         yarn build
